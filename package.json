@@ -1,0 +1,23 @@
+{
+  "name": "inventory-app",
+  "version": "1.0.0",
+  "description": "D&D inventory app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helloscottamos/inventory.git"
+  },
+  "author": "Scott Amos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/helloscottamos/inventory/issues"
+  },
+  "homepage": "https://github.com/helloscottamos/inventory#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "nodemon": "^2.0.6"
+  }
+}
