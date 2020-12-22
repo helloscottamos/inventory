@@ -6,7 +6,7 @@ const addItem = (id, description, value, dateAdded, addedBy, active) => {
     const items = loadItems()
     const duplicateItem = items.find((item) => item.id === id)
 
-    if(!duplicateItem){
+    if(!duplicateItem){ 
         items.push({
             id, 
             description, 
@@ -14,15 +14,15 @@ const addItem = (id, description, value, dateAdded, addedBy, active) => {
             dateAdded, 
             addedBy,
             active
-        })
+    })
 
-    // Write saveItem(items)
+    saveItems(items)
     console.log(chalk.green.inverse('New item added'))
-
-    }else{
-        console.log(chalk.red.inverse('Note item taken'))
+    }else if (duplicateItem && !duplicateItem.active && active){
+        duplicateItem.description = description
+        duplicateItem.value = value
+        duplicateItem.active = true
     }
-}
 
 // Load items where they exist
 const loadItems = () => {
@@ -35,4 +35,9 @@ const loadItems = () => {
     }
 }
 
-addItem('1234', 'moo', 5, '2020-12-17 16:00:00', 'scott', true)
+const saveItems = (items)=>{
+    const dataJSON = JSON.stringify(items)
+    fs.writeFileSync('items.json', dataJSON)
+}
+
+addItem('1235', 'moo', 5, '2020-12-17 16:00:00', 'scott', false)
