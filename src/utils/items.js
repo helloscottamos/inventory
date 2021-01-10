@@ -1,6 +1,8 @@
 const fs = require('fs');
 const chalk = require('chalk')
 
+
+
 const addItem = (id, description, value, dateAdded, addedBy, active) => {
     // Create an item
     const items = loadItems()
@@ -18,11 +20,16 @@ const addItem = (id, description, value, dateAdded, addedBy, active) => {
 
     saveItems(items)
     console.log(chalk.green.inverse('New item added'))
-    }else if (duplicateItem && !duplicateItem.active && active){
+    }
+    else if(duplicateItem && !duplicateItem.active && active){
         duplicateItem.description = description
         duplicateItem.value = value
         duplicateItem.active = true
+        console.log(chalk.green.inverse('item has been updated'))
+    }else if(duplicateItem && !active){
+        console.log(chalk.red.inverse('Item is inactive and cannot be updated'))
     }
+}
 
 // Load items where they exist
 const loadItems = () => {
@@ -40,4 +47,4 @@ const saveItems = (items)=>{
     fs.writeFileSync('items.json', dataJSON)
 }
 
-addItem('1235', 'moo', 5, '2020-12-17 16:00:00', 'scott', false)
+addItem('1237', 'moo', 5, '2020-12-17 16:00:00', 'scott', true)
